@@ -9,7 +9,11 @@
 
 //mes structures
 struct Pilote{
-  public int pilote_id;
+  int pilote_id;
+  double segment1,segment2,segment3;
+  double tour;
+  double [5][2]={};
+  
 }
 
 
@@ -18,6 +22,12 @@ double participant(){
 }
 
 double creerTour(){
+}
+//calcul des meilleurs temps
+double meilleurSegment(){
+  
+}
+double meilleurTour(){
 }
 
 //fonction principale qui permet de lancer le programme
