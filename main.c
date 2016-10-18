@@ -14,7 +14,7 @@ struct Pilote{
   double tour;
   double [5][2]={};
   
-}
+};
 
 
 //mes fonctions
@@ -32,7 +32,7 @@ double meilleurTour(){
 
 //fonction principale qui permet de lancer le programme
 int main(){
-  Pilote partant1;
+  Pilote Pilote1;
   /* specification pilote */
-  pilote1.pilote_id=22;
+  Pilote1.pilote_id=22;
 }
