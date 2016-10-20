@@ -6,14 +6,14 @@ Un circuit de F1 est divisé en 3 secteurs (S1, S2, S3).
 Le calendrier d’un week-end de F1 est établi comme suit : 
 * Vendredi après-midi, une séance d’essais libres d’1h30 (P2) 
 * Samedi matin, une séance d’essais libres d’1h (P3) 
-####Samedi après-midi, la séance de qualifications, divisée en 3 parties : 
+#### Samedi après-midi, la séance de qualifications, divisée en 3 parties : 
 *Q1, durée 18 minutes, qui élimine les 6 dernières voitures (qui occuperont les places 17 à 22 sur la grille de départ de la course) 
 *Q2, durée 15 minutes, qui élimine les 6 voitures suivantes (qui occuperont les places 11 à 16 sur la grille de départ de la course) 
 *Q3, durée 12 minutes, qui permet de classer les 10 voitures restantes pour établir les 10 premières places sur la grille de départ de la course 
 * Dimanche après-midi, la course en elle-même. 
 
-##Première partie : gestion des séances d’essai, des qualifications et de la course 
-###Lors des séances d’essais (P1, P2, P3) : 
+## Première partie : gestion des séances d’essai, des qualifications et de la course 
+### Lors des séances d’essais (P1, P2, P3) : 
 * Relever les temps dans les 3 secteurs à chaque passage pour chaque voiture 
 * Toujours savoir qui a le meilleur temps dans chacun des secteurs 
 * Classer les voitures en fonction de leur tour complet le plus rapide 
@@ -44,8 +44,8 @@ Lors de la course :
 Remarque : les stands se trouvent toujours dans le secteur 3. 
  
   
-##Seconde partie : gestion des drapeaux de course et de la voiture de sécurité 
-###Durant la course, différents drapeaux peuvent être présentés aux pilotes : 
+## Seconde partie : gestion des drapeaux de course et de la voiture de sécurité 
+### Durant la course, différents drapeaux peuvent être présentés aux pilotes : 
 * Drapeau bleu : destiné aux pilotes doublés. Un pilote qui a un tour de retard est obligé de laisser passer un pilote qui va plus vite que lui (qui le double). 
  
 * Drapeau jaune : concerne un secteur. Lorsqu’il est levé, interdiction pour tout le monde de dépasser dans ce secteur. 
@@ -58,4 +58,4 @@ Remarque : les stands se trouvent toujours dans le secteur 3.
 Lorsque la voiture de sécurité va rentrer, tous les pilotes « dépassés » doivent reprendre leur place dans l’ordre du classement actuel. Ils ont 2 tours pour se remettre à leur place en dépassant. 
 Lorsque cela est fait, la voiture de sécurité rentre et la course reprend. 
 
-@gregory
+@author : gregory
