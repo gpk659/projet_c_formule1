@@ -1,4 +1,4 @@
-$# Projet d'un week-end de course de Formule 1 en C :
+# Projet d'un week-end de course de Formule 1 en C :
 Le but du projet est de gérer un week-end complet d’un grand prix de Formule 1, depuis les séances d’essais du vendredi jusqu’à la course du dimanche, en passant par les essais du samedi et la séance de qualifications. 
 Il y a 22 voitures engagées dans un grand prix. 
 Leurs numéros sont : 44, 6, 5, 7, 3, 33, 19, 77, 11, 27, 26, 55, 14, 22, 9, 12, 20, 30, 8, 21, 31, 94. 
