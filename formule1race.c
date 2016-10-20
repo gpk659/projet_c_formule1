@@ -4,12 +4,22 @@
 #include <time.h>
 #include <unistd.h>
 
+#define nbParticipants 22
+
+void afficheCoureurs(int *tab_coureur);
 
 
-void afficheCoureurs(){
-	
+void afficheCoureurs(int *tab_coureur){
+	printf("\nListe de tous les participants de la course : \n");
+	int i;
+	for(i=0; i < nbParticipants ; i++){
+		printf("Id : ");
+		printf("%d",tab_coureur[i]);	
+		printf("\n");
+	}
 }
-void menu_depart(){//conftion de départ
+
+void menu_depart(){//fonction de départ
 	int choix;
 
 	printf("\n\n\nProjet OS Pratique présenté par Grégory - Amine - Joel - Nadia\n\n\n");
@@ -17,7 +27,7 @@ void menu_depart(){//conftion de départ
 	printf("\n ***************************************************\n");
 	printf(" *           Grand Prix de Forumule 1              *\n");
 	printf(" *              Lieu : Nürburgring                 *\n");
-	printf(" *               Pays : Belgique                   *\n");
+	printf(" *               Pays : Allemagne                  *\n");
 	printf(" *                   * * * *                       *\n");
 	printf(" *             05/02/16 - 07/02/17                 *\n");
 	printf(" ***************************************************\n\n");
@@ -62,5 +72,8 @@ void menu_depart(){//conftion de départ
 }
 
 int main(){
+	int tab_coureur [nbParticipants]={44,6,5,7,3,33,19,77,11,27,26,55,14,22,9,12,20,30,8,21,31,94};
+
 	menu_depart();
+	afficheCoureurs(tab_coureur);
 }
