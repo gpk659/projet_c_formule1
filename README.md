@@ -6,7 +6,7 @@ Un circuit de F1 est divisé en 3 secteurs (S1, S2, S3).
 Le calendrier d’un week-end de F1 est établi comme suit : 
 * Vendredi après-midi, une séance d’essais libres d’1h30 (P2) 
 * Samedi matin, une séance d’essais libres d’1h (P3) 
-*####Samedi après-midi, la séance de qualifications, divisée en 3 parties : 
+####Samedi après-midi, la séance de qualifications, divisée en 3 parties : 
 *Q1, durée 18 minutes, qui élimine les 6 dernières voitures (qui occuperont les places 17 à 22 sur la grille de départ de la course) 
 *Q2, durée 15 minutes, qui élimine les 6 voitures suivantes (qui occuperont les places 11 à 16 sur la grille de départ de la course) 
 *Q3, durée 12 minutes, qui permet de classer les 10 voitures restantes pour établir les 10 premières places sur la grille de départ de la course 
