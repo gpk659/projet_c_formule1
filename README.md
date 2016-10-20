@@ -1,4 +1,4 @@
-# Projet d'un week-end de course de Formule 1 en C :
+## Projet d'un week-end de course de Formule 1 en C :
 Le but du projet est de gérer un week-end complet d’un grand prix de Formule 1, depuis les séances d’essais du vendredi jusqu’à la course du dimanche, en passant par les essais du samedi et la séance de qualifications. 
 Il y a 22 voitures engagées dans un grand prix. 
 Leurs numéros sont : 44, 6, 5, 7, 3, 33, 19, 77, 11, 27, 26, 55, 14, 22, 9, 12, 20, 30, 8, 21, 31, 94. 
@@ -11,8 +11,8 @@ o Q1, durée 18 minutes, qui élimine les 6 dernières voitures (qui occuperont 
 o Q2, durée 15 minutes, qui élimine les 6 voitures suivantes (qui occuperont les places 11 à 16 sur la grille de départ de la course) 
 o Q3, durée 12 minutes, qui permet de classer les 10 voitures restantes pour établir les 10 premières places sur la grille de départ de la course 
 * Dimanche après-midi, la course en elle-même. 
-Votre projet devra prendre en charge les choses suivantes. 
-Première partie : gestion des séances d’essai, des qualifications et de la course 
+
+#Première partie : gestion des séances d’essai, des qualifications et de la course 
 Lors des séances d’essais (P1, P2, P3) : 
 * Relever les temps dans les 3 secteurs à chaque passage pour chaque voiture 
 * Toujours savoir qui a le meilleur temps dans chacun des secteurs 
@@ -44,7 +44,7 @@ Lors de la course :
 Remarque : les stands se trouvent toujours dans le secteur 3. 
  
   
-$Seconde partie : gestion des drapeaux de course et de la voiture de sécurité 
+#Seconde partie : gestion des drapeaux de course et de la voiture de sécurité 
 Durant la course, différents drapeaux peuvent être présentés aux pilotes : 
 * Drapeau bleu : destiné aux pilotes doublés. Un pilote qui a un tour de retard est obligé de laisser passer un pilote qui va plus vite que lui (qui le double). 
  
