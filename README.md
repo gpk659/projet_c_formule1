@@ -57,3 +57,5 @@ Remarque : les stands se trouvent toujours dans le secteur 3.
  
 Lorsque la voiture de sécurité va rentrer, tous les pilotes « dépassés » doivent reprendre leur place dans l’ordre du classement actuel. Ils ont 2 tours pour se remettre à leur place en dépassant. 
 Lorsque cela est fait, la voiture de sécurité rentre et la course reprend. 
+
+@gregory
