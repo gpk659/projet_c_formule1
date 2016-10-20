@@ -8,9 +8,10 @@
 
 void afficheCoureurs(int *tab_coureur);
 
+void menu_depart(int *tab_coureur);
 
 void afficheCoureurs(int *tab_coureur){
-	printf("\nListe de tous les participants de la course : \n");
+	printf("\nListe des Particpants engagés dans la course : \n");
 	int i;
 	for(i=0; i < nbParticipants ; i++){
 		printf("Id : ");
@@ -19,7 +20,7 @@ void afficheCoureurs(int *tab_coureur){
 	}
 }
 
-void menu_depart(){//fonction de départ
+void menu_depart(int *tab_coureur){//fonction de départ
 	int choix;
 
 	printf("\n\n\nProjet OS Pratique présenté par Grégory - Amine - Joel - Nadia\n\n\n");
@@ -59,6 +60,7 @@ void menu_depart(){//fonction de départ
 
 		if(choix == 1){ 
 			printf("Vous allez commencer la course\n");
+			afficheCoureurs(tab_coureur);
 
 		}else if(choix ==2){
 			printf("Vous allez Quitter le Programme\n");
@@ -74,6 +76,6 @@ void menu_depart(){//fonction de départ
 int main(){
 	int tab_coureur [nbParticipants]={44,6,5,7,3,33,19,77,11,27,26,55,14,22,9,12,20,30,8,21,31,94};
 
-	menu_depart();
-	afficheCoureurs(tab_coureur);
+	menu_depart(tab_coureur);
+	//afficheCoureurs(tab_coureur);
 }
