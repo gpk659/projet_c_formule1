@@ -18,14 +18,52 @@ void afficheCoureurs(int *tab_coureur){
 		printf("%d",tab_coureur[i]);	
 		printf("\n");
 	}
+
 }
+
+
+void essai_libre(){//fonction pour les essais libres
+	int choix_essai;
+	//system("clear");
+	printf("-----------------------------------------------------\n");
+	printf("- 		Date : 05/02/17 PM : essai libre (1h30)     -\n");
+	printf("-----------------------------------------------------\n");
+
+	
+	while(choix_essai < 1 || choix_essai >2){
+	
+		printf("Choissiez une option pour continuer :\n");
+		printf("1. Commencer le premier essai libre.\n");
+		printf("2. Ne pas commencer l'essai libre, fin du Grand Prix de Forumule 1\n");
+		printf("Votre choix ? ");
+		scanf("%d",&choix_essai);
+	
+	switch(choix_essai){
+		case 1:
+			printf("L'essai de ce Vendredi 05/02/17 va commencer...\n");
+			break;
+		case 2:
+			printf("Le Grand Prix de Forumule 1 n'as pas commencé, fin de la course...\n");
+			exit(0);
+			break;
+		default:
+			printf("Erreur...Veuillez entrer 1 ou 2 !\n");
+			break;
+		}
+	}
+	
+}
+
+
 
 void menu_depart(int *tab_coureur){//fonction de départ
 	int choix;
 
 	printf("\n\n\nProjet OS Pratique présenté par Grégory - Amine - Joel - Nadia\n\n\n");
-
-	printf("\n ***************************************************\n");
+/**
+*
+**/
+	printf("\n***************************************************\n");
 	printf(" *           Grand Prix de Forumule 1              *\n");
 	printf(" *              Lieu : Nürburgring                 *\n");
 	printf(" *               Pays : Allemagne                  *\n");
@@ -55,18 +93,41 @@ void menu_depart(int *tab_coureur){//fonction de départ
 		printf("  Choissiez une option pour continuer :\n");
 		printf("    1. Démarrer le Grand Prix de Forumule 1.\n");
 		printf("    2. Quitter le Programme.\n");
-		printf("  Votre choix ?\n");
+
+		printf("  Votre choix ? ");
 		scanf("%d",&choix);
 
-		if(choix == 1){ 
-			printf("Vous allez commencer la course\n");
-			afficheCoureurs(tab_coureur);
-
-		}else if(choix ==2){
-			printf("Vous allez Quitter le Programme\n");
-		}else if(choix != 1 || choix != 2){
-			printf("choix incorrect...\n");
-			//break;
+		switch(choix){
+			case 1:
+				printf("Vous allez commencer la course\n");
+					
+					int AffichCour;
+					printf("Voulez vous afficher tous les Particpants de la course ?\n");
+					printf(" 1. OUI - 2. NON\n");
+					
+					printf("Votre choix ?");
+					scanf("%d",&AffichCour);
+					
+					switch(AffichCour){//switch pour afficher les coureurs ou non
+						case 1:
+							afficheCoureurs(tab_coureur);
+							essai_libre();
+							break;
+						case 2:
+							printf("La liste des coureurs n'est pas affichée...\n");
+							essai_libre();
+							break;
+						default:
+							printf("Erreur! Veuillez choisir entre '1' et '2'...");
+					}//fin du switch affichCoureurs ou non 
+				break;//fin du choix 1 pour commencer la course
+			case 2:
+				printf("Vous allez quitter le Programme...\n");
+				exit(0);
+				break;
+			default:
+				printf("Choix incorrect...");
+				break;
 		}
 
 	}
