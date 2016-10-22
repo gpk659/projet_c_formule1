@@ -1,1 +1,5 @@
-Projet en C d'un weekend de course de formule 1.
+##Projet en C d'un weekend de course de formule 1.
+
+***
+
+[Wiki](https://github.com/gpk659/projet_c_formule1/wiki)
