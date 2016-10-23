@@ -11,11 +11,11 @@
 #include <pthread.h>
 
 #define nbParticipants 22
-#define nbTourEssai_1 5
+#define nbTourEssai_1 2
 #define maxCaracteres 21
 
 int random_number(int min, int max);
-
+int compteur=0;
 pthread_mutex_t lock; 
 
 /**
@@ -31,32 +31,33 @@ typedef struct {
 	int numVoiture;
 	char name[maxCaracteres];
 	int *s1,*s2,*s3;
+	int *tour;
 } t_pilote;
 
 //Definition de tous les pilotes participants
 t_pilote tb_coureur[nbParticipants]={
-	{44,"L.HAMILTON",NULL,NULL,NULL},
-	{6,"N.ROSBERG",NULL,NULL,NULL},
-	{5,"S.VETTEL",NULL,NULL,NULL},
-	{7,"R.RAIKKONEN",NULL,NULL,NULL},
-	{3,"D.RICCIARDO",NULL,NULL,NULL},
-	{33,"M.VERSTAPPEN",NULL,NULL,NULL},
-	{19,"F.MASSA",NULL,NULL,NULL},
-	{77,"V.BOTTAS",NULL,NULL,NULL},
-	{11,"S.PEREZ",NULL,NULL,NULL},
-	{27,"N.HULKENBERG",NULL,NULL,NULL},
-	{26,"D.KVYAT",NULL,NULL,NULL},
-	{55,"C.SAINZ",NULL,NULL,NULL},
-	{14,"F.ALONSO",NULL,NULL,NULL},
-	{22,"J.BUTTON",NULL,NULL,NULL},
-	{9,"M.ERICSSON",NULL,NULL,NULL},
-	{12,"F.NASR",NULL,NULL,NULL},
-	{20,"K.MAGNUSSEN",NULL,NULL,NULL},
-	{30,"J.PALMER",NULL,NULL,NULL},
-	{8,"R.GROSJEAN",NULL,NULL,NULL},
-	{21,"E.GUTIERREZ",NULL,NULL,NULL},
-	{31,"E.OCON",NULL,NULL,NULL},
-	{94,"P.WEHRLEIN",NULL,NULL,NULL}
+	{44,"L.HAMILTON",NULL,NULL,NULL,NULL},
+	{6,"N.ROSBERG",NULL,NULL,NULL,NULL},
+	{5,"S.VETTEL",NULL,NULL,NULL,NULL},
+	{7,"R.RAIKKONEN",NULL,NULL,NULL,NULL},
+	{3,"D.RICCIARDO",NULL,NULL,NULL,NULL},
+	{33,"M.VERSTAPPEN",NULL,NULL,NULL,NULL},
+	{19,"F.MASSA",NULL,NULL,NULL,NULL},
+	{77,"V.BOTTAS",NULL,NULL,NULL,NULL},
+	{11,"S.PEREZ",NULL,NULL,NULL,NULL},
+	{27,"N.HULKENBERG",NULL,NULL,NULL,NULL},
+	{26,"D.KVYAT",NULL,NULL,NULL,NULL},
+	{55,"C.SAINZ",NULL,NULL,NULL,NULL},
+	{14,"F.ALONSO",NULL,NULL,NULL,NULL},
+	{22,"J.BUTTON",NULL,NULL,NULL,NULL},
+	{9,"M.ERICSSON",NULL,NULL,NULL,NULL},
+	{12,"F.NASR",NULL,NULL,NULL,NULL},
+	{20,"K.MAGNUSSEN",NULL,NULL,NULL,NULL},
+	{30,"J.PALMER",NULL,NULL,NULL,NULL},
+	{8,"R.GROSJEAN",NULL,NULL,NULL,NULL},
+	{21,"E.GUTIERREZ",NULL,NULL,NULL,NULL},
+	{31,"E.OCON",NULL,NULL,NULL,NULL},
+	{94,"P.WEHRLEIN",NULL,NULL,NULL,NULL}
 };
 
 
@@ -105,6 +106,14 @@ void* thread_coureur(void* parameter){
 	sleep(1);
 	printf("	Tour effecuté en %d secondes.\n\n\n",tour);
 	sleep(2);
+
+	tb_coureur[compteur].s1=&s1;
+	tb_coureur[compteur].s2=&s2;
+	tb_coureur[compteur].s3=&s3;
+
+	tb_coureur[compteur].tour=&tour;
+
+
 }
 
 int creer_thread_coureur(void){
@@ -154,9 +163,11 @@ void essai_libre(){
 					printf("	===================================\n");
 					printf("	%s (#%d) va commencer son tour.\n\n",tb_coureur[compteur].name,tb_coureur[compteur].numVoiture);
 					creer_thread_coureur();
+					//printf(tb_coureur[compteur].*s1);
 				}
 			}
 			printf("%d tours effecuté lors de ce premier essai.\nEssai libre terminé...\n",nbTourEssai_1);
+
 			getchar();
 			break;
 
