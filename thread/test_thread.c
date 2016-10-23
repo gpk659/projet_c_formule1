@@ -12,13 +12,13 @@
 void* thread_func(void* parameter){
 	int i=0;
 	for (i=0; i<5; i++){
-		printf("%d\n", i);
+		printf("Id : %d.\n", i);
 		sleep(1);
 	}
 	return 0;
 }
 
-int creerPilote(void){
+int creerPilote(void){//on crée un thread...
 
 	int threadPilote;
 	pthread_t myThread;
