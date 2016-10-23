@@ -12,6 +12,7 @@
 
 #define nbParticipants 22
 #define nbTourEssai_1 5
+#define maxCaracteres 21
 
 int random_number(int min, int max);
 
@@ -28,33 +29,34 @@ pthread_mutex_t lock;
 
 typedef struct {
 	int numVoiture;
+	char name[maxCaracteres];
 	int *s1,*s2,*s3;
 } t_pilote;
 
 //Definition de tous les pilotes participants
 t_pilote tb_coureur[nbParticipants]={
-	{44,NULL,NULL,NULL},
-	{6,NULL,NULL,NULL},
-	{5,NULL,NULL,NULL},
-	{7,NULL,NULL,NULL},
-	{3,NULL,NULL,NULL},
-	{33,NULL,NULL,NULL},
-	{19,NULL,NULL,NULL},
-	{77,NULL,NULL,NULL},
-	{11,NULL,NULL,NULL},
-	{27,NULL,NULL,NULL},
-	{26,NULL,NULL,NULL},
-	{55,NULL,NULL,NULL},
-	{14,NULL,NULL,NULL},
-	{22,NULL,NULL,NULL},
-	{9,NULL,NULL,NULL},
-	{12,NULL,NULL,NULL},
-	{20,NULL,NULL,NULL},
-	{30,NULL,NULL,NULL},
-	{8,NULL,NULL,NULL},
-	{21,NULL,NULL,NULL},
-	{31,NULL,NULL,NULL},
-	{94,NULL,NULL,NULL}
+	{44,"L.HAMILTON",NULL,NULL,NULL},
+	{6,"N.ROSBERG",NULL,NULL,NULL},
+	{5,"S.VETTEL",NULL,NULL,NULL},
+	{7,"R.RAIKKONEN",NULL,NULL,NULL},
+	{3,"D.RICCIARDO",NULL,NULL,NULL},
+	{33,"M.VERSTAPPEN",NULL,NULL,NULL},
+	{19,"F.MASSA",NULL,NULL,NULL},
+	{77,"V.BOTTAS",NULL,NULL,NULL},
+	{11,"S.PEREZ",NULL,NULL,NULL},
+	{27,"N.HULKENBERG",NULL,NULL,NULL},
+	{26,"D.KVYAT",NULL,NULL,NULL},
+	{55,"C.SAINZ",NULL,NULL,NULL},
+	{14,"F.ALONSO",NULL,NULL,NULL},
+	{22,"J.BUTTON",NULL,NULL,NULL},
+	{9,"M.ERICSSON",NULL,NULL,NULL},
+	{12,"F.NASR",NULL,NULL,NULL},
+	{20,"K.MAGNUSSEN",NULL,NULL,NULL},
+	{30,"J.PALMER",NULL,NULL,NULL},
+	{8,"R.GROSJEAN",NULL,NULL,NULL},
+	{21,"E.GUTIERREZ",NULL,NULL,NULL},
+	{31,"E.OCON",NULL,NULL,NULL},
+	{94,"P.WEHRLEIN",NULL,NULL,NULL}
 };
 
 
@@ -72,20 +74,37 @@ t_pilote tb_coureur[nbParticipants]={
 
 //fonction pour afficher tous les coureurs
 void afficheCoureurs(){
-	printf("Test affichage coureur avec struct\n");
 	int i;
+		system("clear");																 
+		printf("	*********************************\n");
+		printf("	*   ID 	 |	 Nom\n");
+		printf("	*-------------------------------*\n");
 	for(i=0; i<nbParticipants; i++){
-		printf("Id : %d .\n",tb_coureur[i].numVoiture );
-	}	
+		printf("	*   %d 	 |	 %s\n",tb_coureur[i].numVoiture,tb_coureur[i].name);
+	}
+		printf("	*********************************\n");
+																		 
 }
 
 
 //ici les threads
 
 void* thread_coureur(void* parameter){
-	int s1,s2,s3;
-	printf("Le thread est bien créé, soulagement...\n");
+	int s1,s2,s3; int tour;
+	s1=random_number(30,60);
+	s2=random_number(30,60);
+	s3=random_number(30,60);
+	tour=s1+s2+s3;
+
+	//printf("Le thread est bien créé, soulagement...\n");
+	printf("	Segment 1 effecuté en %d secondes.\n",s1);
 	sleep(1);
+	printf("	Segment 2 effecuté en %d secondes.\n",s2);
+	sleep(1);
+	printf("	Segment 3 effecuté en %d secondes.\n\n",s3);
+	sleep(1);
+	printf("	Tour effecuté en %d secondes.\n\n\n",tour);
+	sleep(2);
 }
 
 int creer_thread_coureur(void){
@@ -125,14 +144,16 @@ void essai_libre(){
 	switch(choix_essai){
 
 		case 1:
+			system("clear");
 			printf("L'essai de ce Vendredi 05/02/17 va commencer...\n");
 			for (int i=0; i<nbTourEssai_1;i++){
 
 				printf("Tour n°%d.\n\n",i+1);
 				getchar();
 				for(compteur=0; compteur<nbParticipants; compteur++){
-					printf("Coureur : %d va commencer son tour. Le coureur a effecuté son tour en %d.\n",tb_coureur[compteur].numVoiture,random_number(100,300));
-					creer_thread_coureur();	
+					printf("	===================================\n");
+					printf("	%s (#%d) va commencer son tour.\n\n",tb_coureur[compteur].name,tb_coureur[compteur].numVoiture);
+					creer_thread_coureur();
 				}
 			}
 			printf("%d tours effecuté lors de ce premier essai.\nEssai libre terminé...\n",nbTourEssai_1);
