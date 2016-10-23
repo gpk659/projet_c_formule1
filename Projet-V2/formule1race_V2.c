@@ -1,17 +1,29 @@
+/**
+* Version 2.0
+* @author : grégory
+**/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 #include <unistd.h>
+#include <pthread.h>
 
 #define nbParticipants 22
 #define nbTourEssai_1 5
 
 int random_number(int min, int max);
 
+pthread_mutex_t lock; 
+
 /**
-* Version 2.0
-* @author : grégory
+* Il y a un soucis quand deux threads cherchent à modifier deux variables en même temps.
+* Donc on utilise les mutex :
+* Les mutex permettent l'execution mutuelle (mecanisme de synchronisation)
+* @pthread_mutex_t lock; 
+* Un mutex est en C une variable de type pthread_mutex_t. 
+* Elle va nous servir de verrou, pour nous permettre de protéger des données. 
 **/
 
 typedef struct {
@@ -19,7 +31,7 @@ typedef struct {
 	int *s1,*s2,*s3;
 } t_pilote;
 
-
+//Definition de tous les pilotes participants
 t_pilote tb_coureur[nbParticipants]={
 	{44,NULL,NULL,NULL},
 	{6,NULL,NULL,NULL},
@@ -46,6 +58,7 @@ t_pilote tb_coureur[nbParticipants]={
 };
 
 
+
 //fonction random pour générer un temps aléatoire
     int random_number(int min, int max){
         static int rand_is_seeded = 0;
@@ -67,7 +80,33 @@ void afficheCoureurs(){
 }
 
 
-void essai_libre(){//fonction pour les essais libres
+//ici les threads
+
+void* thread_coureur(void* parameter){
+	int s1,s2,s3;
+	printf("Le thread est bien créé, soulagement...\n");
+	sleep(1);
+}
+
+int creer_thread_coureur(void){
+
+	int new_thread_pilote;
+	pthread_t myThread;
+
+	new_thread_pilote=pthread_create(&myThread,0,thread_coureur,0);
+
+	if(new_thread_pilote!=0){
+		printf("Create thread failed error: %d\n",new_thread_pilote);
+		exit(1);
+	}
+	pthread_join(myThread,0);
+
+	pthread_mutex_destroy(&lock);
+}
+
+//fonction pour les essais libres
+
+void essai_libre(){
 	int choix_essai;
 	int compteur =0;
 	//system("clear");
@@ -92,7 +131,8 @@ void essai_libre(){//fonction pour les essais libres
 				printf("Tour n°%d.\n\n",i+1);
 				getchar();
 				for(compteur=0; compteur<nbParticipants; compteur++){
-					printf("Coureur : %d va commencer son tour. Le coureur a effecuté son tour en %d.\n",tb_coureur[compteur].numVoiture,random_number(100,300));	
+					printf("Coureur : %d va commencer son tour. Le coureur a effecuté son tour en %d.\n",tb_coureur[compteur].numVoiture,random_number(100,300));
+					creer_thread_coureur();	
 				}
 			}
 			printf("%d tours effecuté lors de ce premier essai.\nEssai libre terminé...\n",nbTourEssai_1);

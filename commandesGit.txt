@@ -1,0 +1,6 @@
+Toutes les commandes pour git :
+
+git diff
+git status
+git commit -a
+git push 
