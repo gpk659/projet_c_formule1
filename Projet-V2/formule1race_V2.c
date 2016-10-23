@@ -113,6 +113,8 @@ void* thread_coureur(void* parameter){
 
 	tb_coureur[compteur].tour=&tour;
 
+	//printf("%d\n",*tb_coureur[compteur].s1);
+
 
 }
 
@@ -136,8 +138,7 @@ int creer_thread_coureur(void){
 
 void essai_libre(){
 	int choix_essai;
-	int compteur =0;
-	//system("clear");
+	system("clear");
 	printf("-----------------------------------------------------\n");
 	printf("- 	   Date : 05/02/17 PM : essai libre (1h30)      -\n");
 	printf("-----------------------------------------------------\n");
@@ -155,7 +156,8 @@ void essai_libre(){
 		case 1:
 			system("clear");
 			printf("L'essai de ce Vendredi 05/02/17 va commencer...\n");
-			for (int i=0; i<nbTourEssai_1;i++){
+			int i=0;
+			for (i=0; i<nbTourEssai_1;i++){
 
 				printf("Tour n°%d.\n\n",i+1);
 				getchar();
@@ -163,10 +165,10 @@ void essai_libre(){
 					printf("	===================================\n");
 					printf("	%s (#%d) va commencer son tour.\n\n",tb_coureur[compteur].name,tb_coureur[compteur].numVoiture);
 					creer_thread_coureur();
-					//printf(tb_coureur[compteur].*s1);
 				}
+
 			}
-			printf("%d tours effecuté lors de ce premier essai.\nEssai libre terminé...\n",nbTourEssai_1);
+			printf("%d tours effecuté lors de ce premier essai.\nEssai libre terminé...\n",i);
 
 			getchar();
 			break;
