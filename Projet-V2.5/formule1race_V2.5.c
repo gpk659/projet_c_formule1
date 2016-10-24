@@ -72,6 +72,11 @@ t_pilote tb_coureur[nbParticipants]={
         return rand()%(max-min+1)+min;
     }
 
+void affiche_temps(){
+
+
+	printf("|	 %d 	|	  %d 	|     %d	|	  %d	|	%d	|\n",tb_coureur[compteur].numVoiture,*tb_coureur[compteur].s1,*tb_coureur[compteur].s2,*tb_coureur[compteur].s3,*tb_coureur[compteur].tour);
+}
 
 //fonction pour afficher tous les coureurs
 void afficheCoureurs(){
@@ -90,6 +95,26 @@ void afficheCoureurs(){
 
 //ici les threads
 
+void * thread_classement(void* parameter){
+
+}
+int creer_thread_classement(void){
+
+	int new_thread_classement;
+	pthread_t myThread;
+
+	/* on cree le thread */
+
+	new_thread_classement=pthread_create(&myThread,0,thread_classement,0);
+
+	if(new_thread_classement!=0){
+		fprintf(stderr,"Erreur de creation du thread lecture");
+		exit(1);
+	}
+
+	pthread_join(myThread,0);
+}
+
 void* thread_coureur(void* parameter){
 	int s1,s2,s3; int tour;
 	s1=random_number(30,60);
@@ -98,22 +123,28 @@ void* thread_coureur(void* parameter){
 	tour=s1+s2+s3;
 
 	//printf("Le thread est bien créé, soulagement...\n");
-	printf("	Segment 1 effecuté en %d secondes.\n",s1);
-	sleep(1);
-	printf("	Segment 2 effecuté en %d secondes.\n",s2);
-	sleep(1);
-	printf("	Segment 3 effecuté en %d secondes.\n\n",s3);
-	sleep(1);
-	printf("	Tour effecuté en %d secondes.\n\n\n",tour);
-	sleep(2);
+	//printf("	Segment 1 effecuté en %d secondes.\n",s1);
+	//sleep(1);
+	//printf("	Segment 2 effecuté en %d secondes.\n",s2);
+	//sleep(1);
+	//printf("	Segment 3 effecuté en %d secondes.\n\n",s3);
+	//sleep(1);
+	//printf("	Tour effecuté en %d secondes.\n\n\n",tour);
+	//sleep(2);
 
 	tb_coureur[compteur].s1=&s1;
 	tb_coureur[compteur].s2=&s2;
 	tb_coureur[compteur].s3=&s3;
 
 	tb_coureur[compteur].tour=&tour;
+	sleep(1);
+	affiche_temps();
 
 	//printf("%d\n",*tb_coureur[compteur].s1);
+
+	//pthread_mutex_lock(&lock);
+	//creer_thread_classement();
+	//pthread_mutex_unlock(&lock);
 
 
 }
@@ -130,11 +161,10 @@ int creer_thread_coureur(void){
 		exit(1);
 	}
 	pthread_join(myThread,0);
-
 	pthread_mutex_destroy(&lock);
 }
 
-//fonction pour les essais libres
+//fonction pour les essais libresç
 
 void essai_libre(){
 	int choix_essai;
@@ -161,12 +191,16 @@ void essai_libre(){
 
 				printf("Tour n°%d.\n\n",i+1);
 				getchar();
+																										 
+				printf("=================================================================================\n");
+				printf("|	 ID	|	  s1 	|	  s2	|	  s3	|	Tour 	|\n");
+				printf("|===============================================================================|\n");
 				for(compteur=0; compteur<nbParticipants; compteur++){
-					printf("	===================================\n");
-					printf("	%s (#%d) va commencer son tour.\n\n",tb_coureur[compteur].name,tb_coureur[compteur].numVoiture);
+					//printf("	===================================\n");
+					//printf("	%s (#%d) va commencer son tour.\n\n",tb_coureur[compteur].name,tb_coureur[compteur].numVoiture);
 					creer_thread_coureur();
 				}
-
+				printf("=================================================================================\n\n\n");
 			}
 			printf("%d tours effecuté lors de ce premier essai.\nEssai libre terminé...\n",i);
 
